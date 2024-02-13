@@ -22,6 +22,13 @@ const Login = () => {
           <h1 className="font-bold text-3xl pt-4 pb-8 ml-4 ">
             {isSignInFrom ? "Sign In" : "Sign Up"}
           </h1>
+          {!isSignInFrom && (
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="mb-4 p-3 w-11/12 ml-4 rounded-md bg-[#333]"
+            />
+          )}
           <input
             type="email"
             placeholder="Email"
@@ -37,9 +44,9 @@ const Login = () => {
           </button>
           <div className="flex text-lg">
             <p className="ml-4 mr-2 text-[#737373]">
-              {isSignInFrom ? "Already a User" : "New to Netflix?"}
+              {isSignInFrom ? "New to Netflix?" : "Already Registered?"}
             </p>
-            <p onClick={toggleForm} className="cursor-pointer">
+            <p onClick={toggleForm} className="cursor-pointer hover:underline">
               {isSignInFrom ? "Sign In Now" : "Sign Up Now"}
             </p>
           </div>
