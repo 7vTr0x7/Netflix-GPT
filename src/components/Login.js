@@ -22,7 +22,7 @@ const Login = () => {
 
     if (!isSignInFrom) {
       const msg = checkValidName(name.current.value);
-      if (message) return;
+      if (msg) return;
 
       createUserWithEmailAndPassword(
         auth,
