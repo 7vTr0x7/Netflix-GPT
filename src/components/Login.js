@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 
 const Login = () => {
+  const [isSignInFrom, setIsSignInFrom] = useState(true);
+
+  const toggleForm = () => {
+    setIsSignInFrom(!isSignInFrom);
+  };
+
   return (
     <div>
       <Header />
@@ -13,7 +19,9 @@ const Login = () => {
       </div>
       <div className="flex justify-center ">
         <form className="bg-black absolute p-12 w-4/12 my-24 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
-          <h1 className="font-bold text-3xl pt-4 pb-8 ml-4 ">Sign In</h1>
+          <h1 className="font-bold text-3xl pt-4 pb-8 ml-4 ">
+            {isSignInFrom ? "Sign In" : "Sign Up"}
+          </h1>
           <input
             type="email"
             placeholder="Email"
@@ -25,11 +33,15 @@ const Login = () => {
             className="mb-4 p-3 w-11/12 ml-4 rounded-md bg-[#333]"
           />
           <button className="p-2 mt-8 mb-4 font-semibold text-lg bg-[#e50914] w-11/12 ml-4 rounded-md">
-            Sign In
+            {isSignInFrom ? "Sign In" : "Sign Up"}
           </button>
-          <div className="flex">
-            <p className="ml-4 mr-2 text-[#737373]">New to Netflix?</p>
-            <p>Sign up Now</p>
+          <div className="flex text-lg">
+            <p className="ml-4 mr-2 text-[#737373]">
+              {isSignInFrom ? "Already a User" : "New to Netflix?"}
+            </p>
+            <p onClick={toggleForm} className="cursor-pointer">
+              {isSignInFrom ? "Sign In Now" : "Sign Up Now"}
+            </p>
           </div>
         </form>
       </div>

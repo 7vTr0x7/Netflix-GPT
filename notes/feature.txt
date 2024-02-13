@@ -4,6 +4,7 @@
      
      - Header
      - LogIn Form
+     - Sign up Form
 
 
    # Features
