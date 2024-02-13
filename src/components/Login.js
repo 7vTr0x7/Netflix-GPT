@@ -1,7 +1,10 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidData } from "../utils/validate";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { checkValidData, checkValidName } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 
 const Login = () => {
@@ -13,16 +16,14 @@ const Login = () => {
   const name = useRef(null);
 
   const handleButtonClick = () => {
-    const msg = checkValidData(
-      name.current.value,
-      email.current.value,
-      password.current.value
-    );
-    setErrorMessage(msg);
-
-    if (msg) return;
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
+    if (message) return;
 
     if (!isSignInFrom) {
+      const msg = checkValidName(name.current.value);
+      if (message) return;
+
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -30,14 +31,28 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + errorMessage);
+          setErrorMessage(errorCode + "-" + errorMessage);
         });
     } else {
+      // Sign In Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
     }
   };
 
@@ -92,7 +107,7 @@ const Login = () => {
               {isSignInFrom ? "New to Netflix?" : "Already Registered?"}
             </p>
             <p onClick={toggleForm} className="cursor-pointer hover:underline">
-              {isSignInFrom ? "Sign In Now" : "Sign Up Now"}
+              {isSignInFrom ? "Sign Up Now" : "Sign In Now"}
             </p>
           </div>
         </form>
