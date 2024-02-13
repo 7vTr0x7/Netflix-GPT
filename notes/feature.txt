@@ -3,8 +3,11 @@
    # NetflixGPT
      
      - Header
+     - Routing
      - LogIn Form
      - Sign up Form
+     - Form Validation
+     - useRef Hook
 
 
    # Features
