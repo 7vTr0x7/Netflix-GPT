@@ -4,15 +4,18 @@
      
      - Header
      - Routing
-     - LogIn Form
+     - Login Form
      - Sign up Form
      - Form Validation
      - useRef Hook
+     - Firebase Setup
+     - Deploying our app on Firebase
+     - Create Sign up USer Account
 
 
    # Features
     
-       - LogIn/SignUp Form
+       - Login/SignUp Form
           - SignIn/SignUp Form
           - redirect to Browse Page
        - Browse (after authentication)
