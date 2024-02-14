@@ -9,6 +9,8 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slices/useSlice";
+import userIcon from "../utils/images/user.png";
+import { BACKGROUND_IMAGE } from "../utils/constant";
 
 const Login = () => {
   const [isSignInFrom, setIsSignInFrom] = useState(true);
@@ -39,7 +41,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/117455929?v=4",
+            photoURL: userIcon,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -88,10 +90,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          alt="background-img"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/5e16108c-fd30-46de-9bb8-0b4e1bbbc509/29d8d7d7-83cc-4b5f-aa9b-6fd4f68bfaa6/IN-en-20240205-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        />
+        <img alt="background-img" src={BACKGROUND_IMAGE} />
       </div>
       <div className="flex justify-center ">
         <form
