@@ -9,8 +9,8 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slices/useSlice";
-import userIcon from "../utils/images/user.png";
-import { BACKGROUND_IMAGE } from "../utils/constant";
+
+import { BACKGROUND_IMAGE, USER_AVATAR } from "../utils/constant";
 
 const Login = () => {
   const [isSignInFrom, setIsSignInFrom] = useState(true);
@@ -41,7 +41,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: userIcon,
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
