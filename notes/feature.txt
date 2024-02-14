@@ -17,6 +17,9 @@
      - Update Profile
      - Fetch From TMDB movies
 
+     - BugFix: SignUp user display name and profile picture Update
+     - BugFix: If the user is not logged in redirect/Browse to the login page and vice-versa
+
 
    # Features
     
