@@ -21,7 +21,7 @@
      - BugFix: If the user is not logged in redirect/Browse to the login page and vice-versa
 
      - unsubscribe to the onAuthStateChanged callback
-     - Add hard coded values to constant file
+     - Add hardcoded values to the constant file
 
 
    # Features
